@@ -1,48 +1,42 @@
+# Import pandas
 import pandas as pd
 
-# Load the dataset
-df = pd.read_csv("student_scores.csv")
-
-# Display the first 5 rows
+# Load dataset
+df = pd.read_csv("student_scores.csv")   # Replace with your file name 
 print("First 5 Rows:")
 print(df.head())
 
-# Display dataset information
-print("\nDataset Information:")
-print(df.info())
+print("\nLast 5 Rows:")
+print(df.tail())
 
-# Check missing values
-print("\nMissing Values:")
-print(df.isnull().sum())
+print("\nDataset Shape (Rows, Columns):")
+print(df.shape)
 
-# Fill missing values with the column mean (for numeric columns)
-df.fillna(df.mean(numeric_only=True), inplace=True)
-
-# OR remove rows with missing values
-# df.dropna(inplace=True)
-
-# Check for duplicate rows
-print("\nDuplicate Rows:", df.duplicated().sum())
-
-# Remove duplicate rows
-df.drop_duplicates(inplace=True)
-
-# Display statistical summary
-print("\nDataset Statistics:")
-print(df.describe())
-
-# Display column names
 print("\nColumn Names:")
 print(df.columns)
 
-# Display dataset shape
-print("\nDataset Shape:")
-print(df.shape)
-
-# Check missing values again
-print("\nMissing Values After Cleaning:")
+print("\nDataset Information:")
+print(df.info())
+print("\nMissing Values:")
 print(df.isnull().sum())
 
-# Display cleaned dataset
-print("\nCleaned Dataset:")
-print(df.head())
+# Fill missing values with column mean (numeric columns)
+numeric_cols = df.select_dtypes(include='number').columns
+df[numeric_cols] = df[numeric_cols].fillna(df[numeric_cols].mean())
+
+# Fill missing values in text columns with "Unknown"
+text_cols = df.select_dtypes(include='object').columns
+df[text_cols] = df[text_cols].fillna("Unknown")
+
+print("\nMissing Values After Handling:")
+print(df.isnull().sum())
+print("\nDuplicate Rows:", df.duplicated().sum())
+
+df = df.drop_duplicates()
+
+print("Duplicate Rows After Removal:", df.duplicated().sum())
+print("\nStatistical Summary:")
+print(df.describe)
+df.to_csv("cleaned_student_scores.csv", index=False)
+
+print("\nCleaned dataset saved as 'cleaned_student_scores.csv'")
