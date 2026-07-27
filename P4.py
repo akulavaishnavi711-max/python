@@ -1,5 +1,4 @@
 
-
 import pandas as pd
 
 # Load the dataset
@@ -45,19 +44,4 @@ Number of Columns:
 2
 
 Column Names:
-Index(['Hours', 'Scores'], dtype='object')
-
-Dataset Information:
-<class 'pandas.core.frame.DataFrame'>
-RangeIndex: 25 entries, 0 to 24
-Data columns (total 2 columns):
- #   Column  Non-Null Count  Dtype
----  ------  --------------  -----
- 0   Hours   25 non-null     float64
- 1   Scores  25 non-null     int64
-dtypes: float64(1), int64(1)
-memory usage: ...
-None
-If you are using a different student score dataset (such as a CSV with Math, Reading, and Writing scores), upload the file or share its name, and I'll provide the exact code for that dataset.
-
-
+Index(['Hours', 'Scores'], dtype='objec  data

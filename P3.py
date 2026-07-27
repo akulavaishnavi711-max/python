@@ -45,6 +45,7 @@ print(arr2[0:2, 1:3])
 # Mathematical Operations
 print("\n----- Mathematical Operations -----")
 print("" \
+"" \
 "Addition:", arr1 + 5)
 print("Multiplication:", arr1 * 2)
 
